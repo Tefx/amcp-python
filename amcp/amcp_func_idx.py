@@ -66,7 +66,10 @@ class RemoteFunction:
         return ret
 
     def __call__(self, *args, **kwargs):
-        return self.func(self.obj, *args, **kwargs)
+        # print(self.func.__name__)
+        ret = self.func(self.obj, *args, **kwargs)
+        # print(self.func.__name__, "finished")
+        return ret
 
     def ccode(self, var_ac, idx):
         args = [p for name, p in self.sig.parameters.items() if name not in ("self", "cls")]
