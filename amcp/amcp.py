@@ -3,7 +3,13 @@ from __future__ import print_function
 import gevent
 import os
 import zmq.green as zmq
-import msgpack
+
+try:
+    import umsgpack as msgpack
+    msgpack.compatibility = True
+except ImportError:
+    import msgpack
+
 from sys import version_info
 from uuid import uuid4
 
